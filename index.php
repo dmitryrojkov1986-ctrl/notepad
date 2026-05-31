@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=h1, initial-scale=1.0">
-    <title>Document</title>
+    <title>БЛОКНОТ</title>
 </head>
 <body>
-    <h1>jjjj</h1>
+    <h1>добавить заметку</h1>
 </body>
 </html>
