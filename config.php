@@ -12,9 +12,10 @@ $options=[ PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION];
 try
 {
     $pdo=new PDO($dsn,$user,$pass,$options);
-    echo 'подключено';
+    
 }
 catch(\PDOException $e)
 {
-    die('ошибка подключения к бд'.$e->getMessage());
+    error_log("DB Error:". $e->getMessage());
+    die('ошибка подключения к бд');
 }
