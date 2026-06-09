@@ -1,10 +1,16 @@
 <?php
 require '../functions.php';
+require '../config.php';
 
-if($_GET['error']==='empty_fields')
+if(($_GET['error']??'')==='empty_fields')
 {
     echo 'Заполните поля';
 }
+
+$id = (int)($_POST['id'] ?? 0);
+$stmt = $pdo->prepare("SELECT * FROM notes WHERE id = ?");
+$stmt->execute([$id]);
+$note = $stmt->fetch();
 
 ?>
 <!DOCTYPE html>
@@ -24,8 +30,8 @@ if($_GET['error']==='empty_fields')
 <a href="../index.php">НАЗАД</a>
     <h1>обновить заметку</h1>
     <form action="../index.php" method="POST">
-    заметка:<input type="text" name="title"><br>
-    текст:  <textarea name="content" id="" ></textarea><br>
+    заметка:<input type="text" name="title"value="<?= htmlspecialchars($note['title']) ?>" ><br>
+    текст:  <textarea name="content" id="" ><?= htmlspecialchars($note['content']) ?></textarea><br>
             <input type="hidden" name="update" value="1" >
             <input type="hidden" name="id" value="<?=$_POST['id']?>">
             <input type="submit" value="обновить">

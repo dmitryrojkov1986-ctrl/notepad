@@ -45,7 +45,7 @@ if(isset($_POST['update']))
 }
     
 //удаление:
-if($_POST['del'])
+if(isset($_POST['del']))
 {   
     $id=(int)$_POST['id'];
     deleteNote($pdo,$id);
