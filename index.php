@@ -8,7 +8,7 @@ $notes=getNotes($pdo);
 //добавление
 if(isset($_POST['add']))
 {   
-    $id=$_POST['id'];
+    
     $title=  trim($_POST['title']??'');
     $content=trim($_POST['content']??'');
     if(empty($title) || empty($content)) 
@@ -25,14 +25,14 @@ if(isset($_POST['add']))
 //обновление
 if(isset($_POST['update']))
 {   
-    $id=$_POST['id'];
+    $id=(int)$_POST['id'];
     $title  =trim($_POST['title']??'');
     $content=trim($_POST['content']??'');
     
     if(empty($title) || empty($content)) 
     {
-         die('заполните все поля');
-        header("Location: views/edit.php " );
+         
+        header("Location: views/edit.php?error=empty_fields " );
         exit();
     }
     else
@@ -45,9 +45,9 @@ if(isset($_POST['update']))
 }
     
 //удаление:
-if($_POST['del']??'')
+if($_POST['del'])
 {   
-    $id=$_POST['id'];
+    $id=(int)$_POST['id'];
     deleteNote($pdo,$id);
     header("Location:" .$_SERVER['PHP_SELF']);
     exit();

@@ -13,7 +13,7 @@
         }
 </style>
 <body>
-    <h1>добавить заметку</h1><?php var_dump($_POST)?><?php echo $_POST['update']?>
+    <h1>добавить заметку</h1>
     <?= require 'views/form.php'?>
     <h1>все заметки</h1>
     <?php foreach($notes as $note): ?>
@@ -24,13 +24,14 @@
         <p>ID=<?= htmlspecialchars($note['id']) ?></p>
 
         <form action="views/edit.php"  method="post">
-            <input type="hidden" name=""  >
+            <input type="hidden" name="update"  >
             <input type="hidden" name="id" value="<?= $note['id'] ?>" >
             <input type="submit"  value="обновить" >
         </form>
 
-        <form action="" method="post"><input name="del" type="submit" value="удалить">
+        <form action="./index.php" method="post">
             <input type="hidden" name="id" value="<?=$note['id']?>">
+            <input name="del" type="submit" value="удалить">
         </form>
         
     </div><br>
